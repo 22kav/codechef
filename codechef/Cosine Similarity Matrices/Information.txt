@@ -1,0 +1,9 @@
+1) learingpath_model.xlsx is just retrived from the submission_73773.xlsx by filtering only the user who had mad only right submission
+
+2) learning_path_final.xlsx is further processed (learningpath_model)by removed duplicate submission(more than 1 accepted solution for a same prblm).
+
+3) Totally Retrived 211 users submission details , where as after filtering it came around 193 users.
+
+4)matrix(jupyter source file) perfom two operation 
+    i) finds Generalized Transition Path matrix (how the user navigates from one challeges to another)
+    ii) By finding Transition Path matrix for all user cosine similarities is obtained

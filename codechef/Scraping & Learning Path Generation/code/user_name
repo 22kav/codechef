@@ -1,0 +1,25 @@
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+import time,openpyxl
+
+s=Service("C:\\chromedriver_win32\chromedriver.exe")
+driver = webdriver.Chrome(service=s)
+
+time.sleep(1)#1,2,3,4,5,6,7,8,9,10,11,12]
+page=[1,2,3,4,5,6,7,8,9,10,11,7122,7123,7124,7125,7126,7127,14238,14239,14240,14241,14242,14243,14244]
+excel=openpyxl.load_workbook("user.xlsx")
+sheet=excel.create_sheet(title="usernames")
+sheet.append(["User Names"])
+for i in range(len(page)):
+    print(i)
+    st="https://www.codechef.com/ratings/all?itemsPerPage=15&order=asc&page="
+    st=(st+str(page[i])).strip()
+    st=(st+"&sortBy=global_rank").strip()
+    driver.get(st)
+    time.sleep(5)
+    names=driver.find_elements(By.XPATH,"//span[@class='m-username--link']")
+    print(len(names))
+    for j in range(len(names)):
+        sheet.append([names[j].text])
+excel.save("User Names.xlsx")
